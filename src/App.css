@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+}
+
+.slot-machine {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.slot-machine-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  border-radius: 15px;
+  font-family: 'Arial', sans-serif;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.hud-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.balance {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.label {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.value {
+  font-size: 1.5em;
+  color: #ffd700;
+}
+
+.paytable {
+  color: white;
+  font-size: 0.8em;
+}
+
+.paytable-row {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  margin: 2px 0;
+}
+
+.slot-machine {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.bet-controls {
+  color: white;
+  text-align: center;
+}
+
+.bet-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bet-button {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bet-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.bet-button.active {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.bet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spin-button {
+  padding: 15px 40px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #ffa500);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.spin-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.spin-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.game-info {
+  color: white;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.game-info div {
+  margin: 5px 0;
+}
+
+.win-display {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win-amount {
+  text-align: center;
+  animation: winPulse 0.5s ease-in-out;
+}
+
+.win-label {
+  display: block;
+  font-size: 1.5em;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.win-value {
+  display: block;
+  font-size: 2em;
+  color: #00ff00;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.credit {
+  position: absolute;
+  bottom: -25px;
+  right: 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  text-align: right;
+}
+
+@keyframes winPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hud {
+    flex-direction: row;
+    gap: 15px;
+    padding: 12px 15px;
+  }
+  
+  .hud-section {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Group Balance and Win sections together on the left */
+  .hud-section:nth-child(1),
+  .hud-section:nth-child(2) {
+    flex: 1;
+  }
+  
+  /* Paytable on the right */
+  .hud-section:nth-child(3) {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+  
+  .paytable {
+    font-size: 0.75em;
+  }
+  
+  .paytable-row {
+    width: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .slot-machine-app {
+    padding: 10px;
+    max-width: 100%;
+  }
+  
+  .slot-machine {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .slot-machine canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  body {
+    min-height: auto;
+    padding: 10px 0;
+  }
+
+  .slot-machine-app {
+    padding: 8px;
+  }
+
+  .hud {
+    padding: 10px 12px;
+    margin-bottom: 15px;
+  }
+  
+  .paytable {
+    font-size: 0.7em;
+  }
+  
+  .paytable-row {
+    width: 90px;
+  }
+  
+  .balance {
+    font-size: 1.1em;
+  }
+  
+  .value {
+    font-size: 1.3em;
+  }
+}
